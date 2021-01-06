@@ -64,11 +64,13 @@ class List extends React.Component {
           </div>
           {this.props.currList.map((item, index) => (
             <li className="Box-row" key={index}>
-              {" "/* 
+              {" "
+              /* 
               console.log(this.props.currList.dynamicSearch)
               console.log(item.dynamicSearch)
               console.log(item)
-              */}
+              */
+              }
               { item }
               {" "}
               <button onClick={() => this.deleteItem(index)}>Delete</button>
