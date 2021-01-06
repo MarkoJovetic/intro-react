@@ -8,8 +8,8 @@ class App extends React.Component {
 
     this.state = {
       buttonClicked: "",
-      assignments: [],
-      students: [],
+      assignments: ['Prvi','Drugi','Treci','Cetvrti'],
+      students: ['Marko','Nikola','Milos','Tamara','Tijana','Petar'],
       grades: {}
     };
 

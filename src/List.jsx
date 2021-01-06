@@ -4,7 +4,8 @@ class List extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ""
+      value: "",
+      searchTerm: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -22,6 +23,21 @@ class List extends React.Component {
 
     this.props.addFunction(this.state.value);
     event.preventDefault();
+  }
+
+  editSearchTerm = (e) => {
+      this.setState({searchTerm: e.target.value})
+  }
+
+  dynamicSearch = () => {
+      return this.state.currList.filter(currList => currList.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
+  }
+
+  deleteItem(id) {
+    //console.log(id);
+    const list = [this.state.currList];
+    const updatedList = list.filter(item => item.id !== id);
+    this.setState({ currList: updatedList });
   }
 
   render() {
@@ -42,11 +58,20 @@ class List extends React.Component {
           <input className="btn btn-sm" type="submit" value="Submit" />
         </form>
         <ul className="Box">
-          <div className="Box-header">{this.props.title}</div>
+          <div className="Box-header">{this.props.title}
+          <br></br>
+          <input type='text' value = {this.state.searchTerm} onChange = {this.editSearchTerm} placeholder = 'Search...'/>
+          </div>
           {this.props.currList.map((item, index) => (
             <li className="Box-row" key={index}>
+              {" "/* 
+              console.log(this.props.currList.dynamicSearch)
+              console.log(item.dynamicSearch)
+              console.log(item)
+              */}
+              { item }
               {" "}
-              {item}{" "}
+              <button onClick={() => this.deleteItem(index)}>Delete</button>
             </li>
           ))}
         </ul>

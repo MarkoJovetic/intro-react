@@ -23,11 +23,17 @@ class Table extends React.Component {
                 this.props.addFunction(name, row, event.target.value)
               }
             />
+            <button onClick={() => this.deleteGrade()}>Delete</button>
           </div>
         ))}
       </div>
     );
   }
+
+  deleteGrade(){
+    //f-ja delete
+  }
+
   render() {
     return (
       <div>
